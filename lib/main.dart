@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_state_management/examples/counter.dart';
-// import 'package:flutter_state_management/examples/date.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+// import 'package:flutter_state_management/examples/counter.dart';
+// import 'package:flutter_state_management/examples/counter.dart';
+// import 'package:flutter_state_management/examples/date.dart';
+import 'package:flutter_state_management/examples/weather.dart';
 
 void main() {
   runApp(
