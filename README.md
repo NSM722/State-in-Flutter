@@ -136,3 +136,22 @@ class HomePage extends ConsumerWidget {
   }
 }
 ```
+
+### StreamProvider
+
+`Streams` represent a sequence of asynchronous events over time
+
+`StreamProvider` is a type of provider that provides a stream of data to your Flutter widgets. It allows you to access and listen to the data stream within your application.
+
+One can use a stream provider to provide streams of data from various sources, such as databases, APIs, or local files, and then use these streams to update your Flutter UI in **real-time** based on the changes in the data.
+
+```dart
+// Example code for StreamProvider
+final counterStreamProvider = StreamProvider<int>((ref) async* {
+  int counter = 0;
+  while (true) {
+    await Future.delayed(Duration(seconds: 1));
+    yield counter++;
+  }
+});
+```

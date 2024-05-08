@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // import 'package:flutter_state_management/examples/counter.dart';
 // import 'package:flutter_state_management/examples/counter.dart';
 // import 'package:flutter_state_management/examples/date.dart';
-import 'package:flutter_state_management/examples/weather.dart';
+// import 'package:flutter_state_management/examples/weather.dart';
+import 'package:flutter_state_management/examples/names_streams.dart';
 
 void main() {
   runApp(
