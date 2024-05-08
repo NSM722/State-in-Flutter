@@ -155,3 +155,11 @@ final counterStreamProvider = StreamProvider<int>((ref) async* {
   }
 });
 ```
+
+### ChangeNotifierProvider
+
+Thia is a type of provider that provides a `ChangeNotifier` to your Flutter widgets. It allows you to access and listen to the `ChangeNotifier` within your application.
+
+The widgets consuming a `ChangeNotifier` can only listen to the changes but will not be aware of the changes in the state i.e which part of the state has changed.
+
+The widget is only notified that the state has changed and it needs to rebuild.
