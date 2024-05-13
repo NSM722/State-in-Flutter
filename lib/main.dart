@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_state_management/examples/film_lists.dart';
+import 'package:flutter_state_management/provider/favorite_films_provider.dart';
+import 'package:flutter_state_management/provider/favorite_status_state_provider.dart';
+import 'package:flutter_state_management/provider/films_state_notifier_provider.dart';
+import 'package:flutter_state_management/provider/not_favorite_films_provider.dart';
+import 'package:flutter_state_management/widgets/filter_favorite.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 // import 'package:flutter_state_management/provider/person_change_notifier_provider.dart';
 // import 'package:flutter_state_management/examples/counter.dart';
@@ -37,13 +43,32 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Home Page',
+          'Great Films',
         ),
       ),
-      body: const Center(
-        child: Text(
-          '....',
-        ),
+      body: Column(
+        children: [
+          const FilterFavorites(),
+          Consumer(
+            builder: (context, ref, child) {
+              final filter = ref.watch(favoriteStatusStateProvider);
+              switch (filter) {
+                case FavoriteStatus.all:
+                  return FilmLists(
+                    provider: filmsStateNotifierProvider,
+                  );
+                case FavoriteStatus.favorite:
+                  return FilmLists(
+                    provider: favoriteFilmsProvider,
+                  );
+                case FavoriteStatus.notFavorite:
+                  return FilmLists(
+                    provider: notFavoriteFilmsProvider,
+                  );
+              }
+            },
+          ),
+        ],
       ),
     );
   }

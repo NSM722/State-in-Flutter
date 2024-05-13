@@ -23,6 +23,25 @@ class HomePage extends ConsumerWidget {
 }
 ```
 
+```dart
+// Getting enum values
+enum Color { red, green, blue }
+
+void main() {
+  List<Color> colors = Color.values;
+  print(colors);
+
+  // Output: [Color.red, Color.green, Color.blue]
+
+  colors.forEach((value) {
+    List<String> parts = value.toString().split('.');
+    String first = parts.first;
+    String last = parts.last;
+    print('First: $first, Last: $last');
+  });
+}
+```
+
 ## [Flutter Hooks](https://pub.dev/packages/flutter_hooks)
 
 ## Riverpod
@@ -160,6 +179,18 @@ final counterStreamProvider = StreamProvider<int>((ref) async* {
 
 Thia is a type of provider that provides a `ChangeNotifier` to your Flutter widgets. It allows you to access and listen to the `ChangeNotifier` within your application.
 
-The widgets consuming a `ChangeNotifier` can only listen to the changes but will not be aware of the changes in the state i.e which part of the state has changed.
+The widgets consuming a `ChangeNotifier` can only listen to the changes but will not be aware of the changes in the state i.e which part of the **state object** has changed.
 
 The widget is only notified that the state has changed and it needs to rebuild.
+
+When using the `ChangeNotifierProvider`, one has to manually call the `notifyListeners()` method to notify the listeners that the state has changed.
+
+### StateNotifierProvider
+
+This is a type of provider that provides a `StateNotifier` to your Flutter widgets.
+
+It allows you to access and listen to the changes in the state and modify the state.
+
+It's common for a `StateNotifier` to be used with a `StateNotifierProvider` to provide the `StateNotifier` to the widget tree.
+
+It also encapsulates the `state object`, the `copyWith method` to update the state and additional methods for mutating the state.
